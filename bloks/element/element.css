@@ -1,0 +1,10 @@
+.element {
+    width: 282px;
+    min-height: 361px;
+}
+
+@media screen and (max-width: 769px) {
+    .element {
+        width: 100%;
+    }
+}
