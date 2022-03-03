@@ -1,5 +1,5 @@
 const popup = document.querySelector('.popup');
-const openPopup = document.querySelector('.popup__open');
+const openPopup = document.querySelector('.profile__info');
 const closePopup = popup.querySelector('.popup__close');
 
 function togglePopup() {
