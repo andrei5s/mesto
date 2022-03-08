@@ -12,19 +12,19 @@
     <div class="page">
         <header class="header">
             <img src="./images/Vector.svg" alt="логотип" class="header__logo">
-            <div class="header__line"></div>
+
         </header>
 
         <main class="content">
             <section class="profile">
-                <img src="./images/kusto.png" alt="фотография Жака Ива Кусто" class="profile__image">
+                <img src="./images/kusto.png" alt="аватарка" class="profile__image">
                 <div class="profile__info">
                     <h1 class="profile__title">Жак-Ив Кусто </h1>
-                    <button class="profile__edit">                   
+                    <button id="edit" type="button" class="profile__edit  popup_opened">                   
                 </button>
                     <p class="profile__subtitle">Исследователь океана</p>
                 </div>
-                <button class="profile__add">               
+                <button type="button" class="profile__add">               
             </button>
             </section>
 
@@ -33,42 +33,42 @@
                     <img src="./images/kirill-pershin-1088404-unsplash.png" alt="Карачаевск" class="element__image">
                     <div class="element__group">
                         <h2 class="element__place">Карачаевск</h2>
-                        <button class="element__like element__like_active"></button>
+                        <button type="button" class="element__like"></button>
                     </div>
                 </div>
                 <div class="element">
                     <img src="./images/kirill-pershin-1404681-unsplash.png" alt="Гора Эльбрус" class="element__image">
                     <div class="element__group">
                         <h2 class="element__place">Гора Эльбрус</h2>
-                        <button class="element__like element__like_active"></button>
+                        <button type="button" class="element__like"></button>
                     </div>
                 </div>
                 <div class="element">
                     <img src="./images/kirill-pershin-1556355-unsplash.png" alt="Домбай" class="element__image">
                     <div class="element__group">
                         <h2 class="element__place">Домбай</h2>
-                        <button class="element__like element__like_active"></button>
+                        <button type="button" class="element__like"></button>
                     </div>
                 </div>
                 <div class="element">
                     <img src="./images/kirill-pershin-1404681-unsplash.png" alt="Гора Эльбрус" class="element__image">
                     <div class="element__group">
                         <h2 class="element__place">Гора Эльбрус</h2>
-                        <button class="element__like element__like_active"></button>
+                        <button type="button" class="element__like"></button>
                     </div>
                 </div>
                 <div class="element">
                     <img src="./images/kirill-pershin-1556355-unsplash.png" alt="Домбай" class="element__image">
                     <div class="element__group">
                         <h2 class="element__place">Домбай</h2>
-                        <button class="element__like element__like_active"></button>
+                        <button type="button" class="element__like"></button>
                     </div>
                 </div>
                 <div class="element">
                     <img src="./images/kirill-pershin-1088404-unsplash.png" alt="Карачаево-Черкессия" class="element__image">
                     <div class="element__group">
                         <h2 class="element__place">Карачаево-Черкессия</h2>
-                        <button class="element__like element__like_active"></button>
+                        <button type="button" class="element__like"></button>
                     </div>
                 </div>
             </section>
@@ -84,10 +84,10 @@
         <div class="popup__container">
             <button class="popup__close" type="button" aria-label="закрыть окно"></button>
             <h2 class="popup__title">Редактировать профиль</h2>
-            <form class="username">
+            <form class="popup__user" name="user">
                 <fieldset class="popup__input-container">
-                    <input type="text" value="Жак-Ив Кусто" placeholder="Ваше имя" class="popup__input popup__input_name">
-                    <input type="text" value="Исследователь океана" placeholder="Чем занимаетесь?" class="popup__input popup__input_job">
+                    <input type="text" name="name" value="Жак-Ив Кусто" placeholder="Ваше имя" class="popup_input popup_input_name">
+                    <input type="text" name="job" value="Исследователь океана" placeholder="Чем занимаетесь?" class="popup_input popup_input_job">
                     <button class="popup__save" type="submit" aria-label="сохранить"></button>
                 </fieldset>
             </form>

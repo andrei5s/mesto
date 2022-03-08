@@ -1,33 +1,26 @@
 const popup = document.querySelector('.popup');
 const openPopup = document.querySelector('.profile__info');
 const closePopup = popup.querySelector('.popup__close');
-
-function togglePopup() {
-    popup.classList.toggle('popup__opened');
-
-}
-
-popup.addEventListener('click', function(event) {
-    if (event.target === event.currentTarget) {
-        togglePopup();
-    }
-});
-
-openPopup.addEventListener('click', togglePopup);
-closePopup.addEventListener('click', togglePopup);
-
-const formElement = document.querySelector('.username');
-const nameInput = document.querySelector('.popup__input_name');
-const jobInput = document.querySelector('.popup__input_job');
+let edit = document.querySelector('#edit');
+let conteins = edit.classList.contains('popup_opened');
+const formElement = document.querySelector('.popup__user');
+const nameInput = document.querySelector('.popup_input_name');
+const jobInput = document.querySelector('.popup_input_job');
 const profileTitle = document.querySelector('.profile__title');
 const profileSubtitle = document.querySelector('.profile__subtitle');
-const elementLikes = document.querySelectorAll('.element__like');
+console.log(conteins);
 
-for (let i = 0; i < elementLikes.length; i++) {
-    elementLikes[i].addEventListener('click', function() { elementLikes[i].classList.toggle('element__like_active'); });
+openPopup.addEventListener('click', function() {
+    popup.classList.toggle('popup_opened');
+});
+
+closePopup.addEventListener('click', function() {
+    popup.classList.toggle('popup_opened');
+});
+
+function togglePopup() {
+    popup.classList.toggle('popup_opened');
 }
-
-
 
 function formSubmitHandler(evt) {
     evt.preventDefault();
@@ -35,5 +28,6 @@ function formSubmitHandler(evt) {
     profileSubtitle.textContent = jobInput.value;
     togglePopup();
 }
+
 
 formElement.addEventListener('submit', formSubmitHandler);
