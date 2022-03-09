@@ -1,7 +1,8 @@
 const popup = document.querySelector('.popup');
-const openPopup = document.querySelector('.profile__info');
+const openPopup = document.querySelector('.profile__edit');
 const closePopup = popup.querySelector('.popup__close');
 let edit = document.querySelector('#edit');
+edit.classList.add('popup__opened');
 let conteins = edit.classList.contains('popup__opened');
 const formElement = document.querySelector('.popup__user');
 const nameInput = document.querySelector('.popup__input-name');
