@@ -12,9 +12,3 @@
     overflow: hidden;
     text-overflow: ellipsis;
 }
-
-.element__place:hover {
-    overflow: inherit;
-    text-overflow: inherit;
-    white-space: inherit;
-}

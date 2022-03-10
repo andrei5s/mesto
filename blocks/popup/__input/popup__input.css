@@ -1,6 +1,10 @@
 .popup__input {
     margin: 30px auto 0 auto;
     font-family: Inter, Arial, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
     display: flex;
     align-items: center;
     box-sizing: border-box;
