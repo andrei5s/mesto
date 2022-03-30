@@ -1,0 +1,8 @@
+.popupimg__container {
+    position: relative;
+    display: grid;
+    padding: 0;
+    width: max-content;
+    margin: 90px auto 0 auto;
+    padding: 0;
+}

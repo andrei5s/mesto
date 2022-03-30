@@ -12,7 +12,6 @@
     <div class="page">
         <header class="header">
             <img src="./images/Vector.svg" alt="логотип" class="header__logo">
-
         </header>
 
         <main class="content">
@@ -24,53 +23,12 @@
                 </button>
                     <p class="profile__subtitle">Исследователь океана</p>
                 </div>
-                <button type="button" class="profile__add">               
+                <button id="add" type="button" class="profile__add">               
             </button>
             </section>
 
             <section class="elements">
-                <div class="element">
-                    <img src="./images/kirill-pershin-1088404-unsplash.png" alt="Карачаевск" class="element__image">
-                    <div class="element__group">
-                        <h2 class="element__place">Карачаевск</h2>
-                        <button type="button" class="element__like"></button>
-                    </div>
-                </div>
-                <div class="element">
-                    <img src="./images/kirill-pershin-1404681-unsplash.png" alt="Гора Эльбрус" class="element__image">
-                    <div class="element__group">
-                        <h2 class="element__place">Гора Эльбрус</h2>
-                        <button type="button" class="element__like"></button>
-                    </div>
-                </div>
-                <div class="element">
-                    <img src="./images/kirill-pershin-1556355-unsplash.png" alt="Домбай" class="element__image">
-                    <div class="element__group">
-                        <h2 class="element__place">Домбай</h2>
-                        <button type="button" class="element__like"></button>
-                    </div>
-                </div>
-                <div class="element">
-                    <img src="./images/kirill-pershin-1404681-unsplash.png" alt="Гора Эльбрус" class="element__image">
-                    <div class="element__group">
-                        <h2 class="element__place">Гора Эльбрус</h2>
-                        <button type="button" class="element__like"></button>
-                    </div>
-                </div>
-                <div class="element">
-                    <img src="./images/kirill-pershin-1556355-unsplash.png" alt="Домбай" class="element__image">
-                    <div class="element__group">
-                        <h2 class="element__place">Домбай</h2>
-                        <button type="button" class="element__like"></button>
-                    </div>
-                </div>
-                <div class="element">
-                    <img src="./images/kirill-pershin-1088404-unsplash.png" alt="Карачаево-Черкессия" class="element__image">
-                    <div class="element__group">
-                        <h2 class="element__place">Карачаево-Черкессия</h2>
-                        <button type="button" class="element__like"></button>
-                    </div>
-                </div>
+
             </section>
 
         </main>
@@ -79,20 +37,50 @@
             <p class="footer__author">&copy;2022. Андрей Суховьев</p>
         </footer>
     </div>
-    <div class="popup">
-
-        <div class="popup__container">
-            <button class="popup__close" type="button" aria-label="закрыть окно"></button>
-            <h2 class="popup__title">Редактировать профиль</h2>
-            <form class="popup__user" name="user">
-                <fieldset class="popup__input-container">
-                    <input type="text" id="inputname" name="name" value="Жак-Ив Кусто" placeholder="Ваше имя" class="popup__input">
-                    <input type="text" id="inputjob" name="job" value="Исследователь океана" placeholder="Чем занимаетесь?" class="popup__input">
-                    <button class="popup__save" type="submit" aria-label="сохранить">Сохранить</button>
+    <div class="popup popupprofile">
+        <div class="popupprofile__container">
+            <button class="popupprofile__close" type="button" aria-label="закрыть окно"></button>
+            <h2 class="popupprofile__title">Редактировать профиль</h2>
+            <form class="popupprofile__user" name="user">
+                <fieldset class="popupprofile__input-container">
+                    <input type="text" id="inputname" name="name" value="Жак-Ив Кусто" placeholder="Ваше имя" class="popupprofile__input">
+                    <input type="text" id="inputjob" name="job" value="Исследователь океана" placeholder="Чем занимаетесь?" class="popupprofile__input">
+                    <button class="popupprofile__save" type="submit" aria-label="сохранить">Сохранить</button>
                 </fieldset>
             </form>
         </div>
     </div>
+    <div class="popup popupphoto">
+        <div class="popupphoto__element">
+            <button class="popupphoto__close" type="button" aria-label="закрыть окно"></button>
+            <h2 class="popupphoto__title">Новое место</h2>
+            <form class="popupphoto__cards" name="cards">
+                <fieldset class="popupphoto__input-cards">
+                    <input type="text" id="inputnamecard" name="namecard" value="Название" placeholder="название" class="popupphoto__input">
+                    <input type="text" id="inputcard" name="card" value="Ссылка на картинку" placeholder="Ссылка на картинку" class="popupphoto__input">
+                    <button class="popupphoto__save" type="submit" aria-label="создать">Создать</button>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+    <div class="popup popupimg">
+        <figure class="popupimg__container">
+            <button class="popupimg__close" type="button" aria-label="закрыть окно"></button>
+            <img class="popupimg__card" src="#" alt="#">
+            <figcaption class="popupimg__title"></figcaption>
+        </figure>
+    </div>
+    <template class="element__template">
+        <div class="element">
+            <button id="delete" type="button" class="element__delete"></button>
+            <img src="#" alt="#" class="element__image">
+            <div class="element__group">
+                <h2 class="element__place"></h2>
+                <button id="like" type="button" class="element__like"></button>
+            </div>
+        </div>
+    </template>
+
     <script src="./scripts/script.js"></script>
 </body>
 

@@ -1,4 +1,4 @@
-.popup__input-container {
+.popupprofile__input-container {
     margin: 24px 0 0 0;
     padding: 0;
     width: 430px;
@@ -8,7 +8,7 @@
 }
 
 @media screen and (max-width: 767px) {
-    .popup__input-container {
+    .popupprofile__input-container {
         margin-top: 45px;
         width: 238px;
     }

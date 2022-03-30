@@ -9,12 +9,15 @@
     cursor: pointer;
 }
 
-.element__like:hover {
-    opacity: 0.5;
-}
 
+/*
 .element__like:active {
     background: url(../../../images/like-active.svg);
+}
+*/
+
+.element__like:hover {
+    opacity: 0.5;
 }
 
 .element__like:focus {
