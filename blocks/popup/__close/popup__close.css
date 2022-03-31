@@ -1,4 +1,4 @@
-.popupphoto__close {
+.popup__close {
     display: grid;
     justify-self: end;
     margin: -40px -40px 8px 0;
@@ -12,12 +12,12 @@
     cursor: pointer;
 }
 
-.popupphoto__close:hover {
+.popup__close:hover {
     opacity: 0.6;
 }
 
 @media screen and (max-width: 767px) {
-    .popupphoto__close {
+    .popup__close {
         width: 20px;
         height: 20px;
         margin: -36px 0 16px 0;
