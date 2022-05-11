@@ -50,6 +50,8 @@ const openImgPopup = document.querySelector('.popupimg__card');
 const closeImgPopup = document.querySelector('#imgclose');
 const imgTitle = document.querySelector('.popupimg__title');
 
+const popups = document.querySelectorAll('.popup');
+
 
 function renderInitialCards() {
     initialCards.forEach(renderCard);
@@ -88,6 +90,7 @@ function openPopup(popup) {
 function closePopup(popup) {
     popup.classList.remove('popup_opened');
 }
+
 
 function openProfilePopup() {
     openPopup(openPopupProf);
@@ -134,6 +137,20 @@ function handlerPhotoFormSubmit(evt) {
     renderCard({ name: inputPhotoName.value, link: inputPhoto.value });
     closePhotoPopup();
 }
+
+popups.forEach((popup) => {
+    popup.addEventListener('mousedown', (evt) => {
+        if (evt.target.classList.contains('popup_opened')) {
+            closePopup(popup);
+        }
+    });
+    document.addEventListener('keydown', (evt) => {
+        if (evt.key === 'Escape') {
+            closePopup(popup);
+        }
+    });
+
+});
 
 profileOpenButton.addEventListener('click', openProfilePopup);
 profileCloseButton.addEventListener('click', closeProfilePopap);

@@ -1,7 +1,7 @@
 .popupimg__container {
     position: relative;
     display: grid;
-    padding: 0;
     width: max-content;
+    padding: 0;
     margin: 90px auto 0 auto;
 }

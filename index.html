@@ -41,11 +41,13 @@
             <div class="popupprofile__container">
                 <button class="popup__close" id="profileclose" type="button" aria-label="закрыть окно"></button>
                 <h2 class="popupprofile__title">Редактировать профиль</h2>
-                <form class="popupprofile__user" name="user">
+                <form class="popupprofile__user" name="user" novalidate>
                     <fieldset class="popupprofile__input-container">
-                        <input type="text" id="inputname" name="name" value="Жак-Ив Кусто" placeholder="Ваше имя" class="popupprofile__input">
-                        <input type="text" id="inputjob" name="job" value="Исследователь океана" placeholder="Чем занимаетесь?" class="popupprofile__input">
-                        <button class="popupprofile__save" type="submit" aria-label="сохранить">Сохранить</button>
+                        <input type="text" id="inputname" name="name" value="Жак-Ив Кусто" placeholder="Ваше имя" class="popupprofile__input" minlength="2" maxlength="40" required>
+                        <span id="inputname-error" class="error"></span>
+                        <input type="text" id="inputjob" name="job" value="Исследователь океана" placeholder="Чем занимаетесь?" class="popupprofile__input" minlength="2" maxlength="200" required>
+                        <span id="inputjob-error" class="error"></span>
+                        <button class="popup__button popupprofile__save" type="submit" aria-label="сохранить">Сохранить</button>
                     </fieldset>
                 </form>
             </div>
@@ -54,11 +56,13 @@
             <div class="popupphoto__element">
                 <button class="popup__close" id="photoclose" type="button" aria-label="закрыть окно"></button>
                 <h2 class="popupphoto__title">Новое место</h2>
-                <form class="popupphoto__cards" name="cards">
+                <form class="popupphoto__cards" name="cards" novalidate>
                     <fieldset class="popupphoto__input-cards">
-                        <input type="text" id="inputnamecard" name="namecard" value="Название" placeholder="название" class="popupphoto__input">
-                        <input type="text" id="inputcard" name="card" value="Ссылка на картинку" placeholder="Ссылка на картинку" class="popupphoto__input">
-                        <button class="popupphoto__save" type="submit" aria-label="создать">Создать</button>
+                        <input type="text" id="inputnamecard" name="namecard" value="Название" placeholder="название" class="popupphoto__input" minlength="2" maxlength="30" required>
+                        <span id="inputnamecard-error" class="error"></span>
+                        <input type="url" id="inputcard" name="card" value="Ссылка на картинку" placeholder="Ссылка на картинку" class="popupphoto__input" required>
+                        <span id="inputcard-error" class="error"></span>
+                        <button class="popup__button popupphoto__save" id="button-save" type="submit" aria-label="создать" disabled>Создать</button>
                     </fieldset>
                 </form>
             </div>
@@ -72,19 +76,20 @@
         </div>
 
         <template class="element__template">
-        <div class="element">
-            <button id="delete" type="button" class="element__delete"></button>
-            <img src="#" alt="#" class="element__image">
-            <div class="element__group">
-                <h2 class="element__place"></h2>
-                <button id="like" type="button" class="element__like"></button>
-            </div> 
-        </div>       
+            <div class="element">
+                <button id="delete" type="button" class="element__delete"></button>
+                <img src="#" alt="#" class="element__image">
+                <div class="element__group">
+                    <h2 class="element__place"></h2>
+                    <button id="like" type="button" class="element__like"></button>
+                </div> 
+            </div>       
         </template>
 
     </div>
 
     <script src="./scripts/script.js"></script>
+    <script src="./scripts/validate.js"></script>
 </body>
 
 </html>
