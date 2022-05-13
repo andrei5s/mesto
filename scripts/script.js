@@ -1,30 +1,4 @@
-const initialCards = [{
-        name: 'Архыз',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-    },
-    {
-        name: 'Челябинская область',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-    },
-    {
-        name: 'Иваново',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-    },
-    {
-        name: 'Камчатка',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-    },
-    {
-        name: 'Холмогорский район',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-    },
-    {
-        name: 'Байкал',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-    }
-];
-
-const openPopupProf = document.querySelector('.popupprofile');
+const ProfileOpenPopup = document.querySelector('.popupprofile');
 const profileOpenButton = document.querySelector('.profile__edit');
 const profileCloseButton = document.querySelector('#profileclose');
 const profileForm = document.querySelector('.popupprofile__user');
@@ -46,12 +20,13 @@ const elementTemplate = document.querySelector('.element__template');
 const elementLike = document.querySelector('.element__like');
 
 const imgPopup = document.querySelector('.popupimg');
-const openImgPopup = document.querySelector('.popupimg__card');
-const closeImgPopup = document.querySelector('#imgclose');
+const ImgOpenPopup = document.querySelector('.popupimg__card');
+const ImgClosePopup = document.querySelector('#imgclose');
 const imgTitle = document.querySelector('.popupimg__title');
 
 const popups = document.querySelectorAll('.popup');
 
+const ESC_CODE = 'Escape';
 
 function renderInitialCards() {
     initialCards.forEach(renderCard);
@@ -83,23 +58,32 @@ function renderCard(item) {
     elements.prepend(element);
 }
 
+function closeByEsc(evt) {
+    if (evt.key === ESC_CODE) {
+        const openedPopup = document.querySelector('.popup_opened');
+        closePopup(openedPopup);
+    }
+}
+
 function openPopup(popup) {
     popup.classList.add('popup_opened');
+    document.addEventListener('keydown', closeByEsc);
 }
 
 function closePopup(popup) {
     popup.classList.remove('popup_opened');
+    document.removeEventListener('keydown', closeByEsc);
 }
 
 
 function openProfilePopup() {
-    openPopup(openPopupProf);
+    openPopup(ProfileOpenPopup);
     nameInput.value = profileTitle.textContent;
     jobInput.value = profileSubtitle.textContent;
 }
 
 function closeProfilePopap() {
-    closePopup(openPopupProf);
+    closePopup(ProfileOpenPopup);
 }
 
 function openPhotoPopup() {
@@ -116,8 +100,8 @@ function closePhotoPopup() {
 function openImg(evt) {
 
     openPopup(imgPopup);
-    openImgPopup.src = evt.target.src;
-    openImgPopup.alt = evt.target.alt;
+    ImgOpenPopup.src = evt.target.src;
+    ImgOpenPopup.alt = evt.target.alt;
     imgTitle.textContent = evt.target.alt;
 }
 
@@ -144,12 +128,6 @@ popups.forEach((popup) => {
             closePopup(popup);
         }
     });
-    document.addEventListener('keydown', (evt) => {
-        if (evt.key === 'Escape') {
-            closePopup(popup);
-        }
-    });
-
 });
 
 profileOpenButton.addEventListener('click', openProfilePopup);
@@ -160,7 +138,7 @@ photoAddOpenButon.addEventListener('click', openPhotoPopup);
 photoAddCloseButon.addEventListener('click', closePhotoPopup);
 photoCards.addEventListener('submit', handlerPhotoFormSubmit);
 
-openImgPopup.addEventListener('click', openImg);
-closeImgPopup.addEventListener('click', closeImg);
+ImgOpenPopup.addEventListener('click', openImg);
+ImgClosePopup.addEventListener('click', closeImg);
 
 renderInitialCards();

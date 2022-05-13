@@ -1,24 +1,20 @@
 function enableValidation(config) {
     const form = document.querySelector(config.form);
 
-    form.addEventListener('submit', handleFormSubmit);
+    form.addEventListener('submit', (event) => handleFormSubmit(event, config));
     form.addEventListener('input', (event) => hendleFormInput(event, config));
 
 }
 
-function disabled() {
-    const button = document.querySelector('#button-save');
-    button.classList.add('popup__button_invalid');
-    button.setAttribute('disabled', 'disabled');
-}
-
-function handleFormSubmit(event) {
+function handleFormSubmit(event, config) {
     event.preventDefault();
-    disabled();
+
+    const form = event.currentTarget;
+
+    setSubmitButtonState(form, config);
 }
 
 function hendleFormInput(event, config) {
-
     event.preventDefault();
 
     const form = event.currentTarget;
@@ -55,33 +51,37 @@ function setFieldError(input) {
 
 }
 
+
 function setSubmitButtonState(form, config) {
+
     const button = form.querySelector(config.submitButton);
     const isValid = form.checkValidity();
 
     if (isValid) {
-        button.classList.add(config.popupIsValid);
         button.classList.remove(config.popupIsInvalid);
         button.removeAttribute('disabled');
     } else {
         button.classList.add(config.popupIsInvalid);
-        button.classList.remove(config.popupIsValid);
         button.setAttribute('disabled', 'disabled');
     }
 
 }
 
+/* Разделил кнопки на отдельные классы, чтобы в будующем, если ещё появятся формы, можно было добавлять
+этим формам функцию enableValidation с другими параметрами config, а не ломать потом переменную {
+    submitButton: '.popup__button', 
+    popupIsValid: 'popup__button_valid', 
+    popupIsInvalid: 'popup__button_invalid'
+} */
 
 enableValidation({
     form: '.popupprofile__user[name="user"]',
-    submitButton: '.popup__button',
-    popupIsValid: 'popup__button_valid',
-    popupIsInvalid: 'popup__button_invalid',
+    submitButton: '.popupprofile__save',
+    popupIsInvalid: 'popupprofile__save_invalid',
 });
 
 enableValidation({
     form: '.popupphoto__cards[name="cards"]',
-    submitButton: '.popup__button',
-    popupIsValid: 'popup__button_valid',
-    popupIsInvalid: 'popup__button_invalid',
+    submitButton: '.popupphoto__save',
+    popupIsInvalid: 'popupphoto__save_invalid',
 });

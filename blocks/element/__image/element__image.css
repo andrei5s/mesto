@@ -6,3 +6,7 @@
     display: block;
     background-color: #ffffff;
 }
+
+.element__image:hover {
+    opacity: 0.8;
+}

@@ -47,7 +47,7 @@
                         <span id="inputname-error" class="error"></span>
                         <input type="text" id="inputjob" name="job" value="Исследователь океана" placeholder="Чем занимаетесь?" class="popupprofile__input" minlength="2" maxlength="200" required>
                         <span id="inputjob-error" class="error"></span>
-                        <button class="popup__button popupprofile__save" type="submit" aria-label="сохранить">Сохранить</button>
+                        <button class="popupprofile__save popupprofile__save_valid" type="submit" aria-label="сохранить">Сохранить</button>
                     </fieldset>
                 </form>
             </div>
@@ -62,7 +62,7 @@
                         <span id="inputnamecard-error" class="error"></span>
                         <input type="url" id="inputcard" name="card" value="Ссылка на картинку" placeholder="Ссылка на картинку" class="popupphoto__input" required>
                         <span id="inputcard-error" class="error"></span>
-                        <button class="popup__button popupphoto__save" id="button-save" type="submit" aria-label="создать" disabled>Создать</button>
+                        <button class="popupphoto__save popupphoto__save_valid" id="button-save" type="submit" aria-label="создать" disabled>Создать</button>
                     </fieldset>
                 </form>
             </div>
@@ -88,6 +88,7 @@
 
     </div>
 
+    <script src="./scripts/initialCards.js"></script>
     <script src="./scripts/script.js"></script>
     <script src="./scripts/validate.js"></script>
 </body>
