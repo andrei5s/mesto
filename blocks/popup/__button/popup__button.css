@@ -1,4 +1,9 @@
-.popupprofile__save_invalid {
+.popup__button {
+    color: #ffffff;
+    background-color: #000000;
+}
+
+.popup__button:disabled {
     background: #ffffff;
     box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
     border-radius: 10px;

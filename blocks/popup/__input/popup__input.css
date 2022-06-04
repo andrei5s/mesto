@@ -1,4 +1,4 @@
-.popupphoto__input {
+.popup__input {
     margin: 30px auto 13px auto;
     font-family: Inter, Arial, sans-serif;
     font-style: normal;
@@ -14,11 +14,11 @@
 }
 
 @media screen and (max-width: 767px) {
-    .popupphoto__input {
+    .popup__input {
         width: 238px;
     }
 }
 
-.popupphoto__input:invalid {
+.popup__input:invalid {
     border-bottom: 1px solid red;
 }

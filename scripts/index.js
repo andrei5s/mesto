@@ -1,3 +1,8 @@
+import { openImg, closeImg } from "./utils.js";
+import { Card } from "./Card.js";
+import { initialCards } from "./initialCards.js"
+import { FormValidator } from "./FormValidator.js";
+
 const ProfileOpenPopup = document.querySelector('.popupprofile');
 const profileOpenButton = document.querySelector('.profile__edit');
 const profileCloseButton = document.querySelector('#profileclose');
@@ -15,48 +20,47 @@ const inputPhotoName = photoPopup.querySelector('#inputnamecard');
 const photoCards = photoPopup.querySelector('.popupphoto__cards');
 
 const elements = document.querySelector('.elements');
-const elementAdd = document.querySelector('#add');
 const elementTemplate = document.querySelector('.element__template');
-const elementLike = document.querySelector('.element__like');
 
-const imgPopup = document.querySelector('.popupimg');
 const ImgOpenPopup = document.querySelector('.popupimg__card');
 const ImgClosePopup = document.querySelector('#imgclose');
-const imgTitle = document.querySelector('.popupimg__title');
 
 const popups = document.querySelectorAll('.popup');
 
+const popupEditProfile = document.querySelector('.popup-editProfile');
+const popupAddCard = document.querySelector('.popup-addCard');
+const formAddCard = popupAddCard.querySelector('.popup__form');
+const formEditProfile = popupEditProfile.querySelector('.popup__form');
+
 const ESC_CODE = 'Escape';
 
+const config = {
+    formSelector: '.popup__form',
+    inputSelector: '.popup__input',
+    submitButtonSelector: '.popup__button',
+    inactivButtonClass: 'popup__button_disabled',
+    inputErrorClass: 'popup__input_type_error',
+    errorClass: 'popup__input-error_is-active'
+}
+
+const photoCardsValidate = new FormValidator(config, formAddCard);
+const profileFormValidate = new FormValidator(config, formEditProfile);
+
+photoCardsValidate.enableValidation();
+profileFormValidate.enableValidation();
+
+function renderCard(item) {
+
+    const element = new Card(item, elementTemplate);
+    elements.prepend(element.createCard());
+}
+
 function renderInitialCards() {
+
     initialCards.forEach(renderCard);
 }
 
-function createCard(item) {
-    const element = elementTemplate.content.querySelector('.element').cloneNode(true);
-    const cardImage = element.querySelector('.element__image');
-    cardImage.addEventListener('click', openImg);
-
-    element.querySelector('.element__place').textContent = item.name;
-    cardImage.src = item.link;
-    cardImage.alt = item.name;
-
-    element.querySelector('.element__like').addEventListener('click', function(evt) {
-        evt.target.classList.toggle('element__like_active');
-    });
-
-
-    element.querySelector('.element__delete').addEventListener('click', function() {
-        element.remove();
-    });
-
-    return element;
-}
-
-function renderCard(item) {
-    const element = createCard(item);
-    elements.prepend(element);
-}
+renderInitialCards();
 
 function closeByEsc(evt) {
     if (evt.key === ESC_CODE) {
@@ -75,18 +79,23 @@ function closePopup(popup) {
     document.removeEventListener('keydown', closeByEsc);
 }
 
-
 function openProfilePopup() {
+
     openPopup(ProfileOpenPopup);
+
     nameInput.value = profileTitle.textContent;
     jobInput.value = profileSubtitle.textContent;
+
 }
 
 function closeProfilePopap() {
     closePopup(ProfileOpenPopup);
+
+
 }
 
 function openPhotoPopup() {
+    photoCardsValidate.resetForm();
     openPopup(photoPopup);
     inputPhotoName.value = '';
     inputPhoto.value = '';
@@ -94,19 +103,6 @@ function openPhotoPopup() {
 
 function closePhotoPopup() {
     closePopup(photoPopup);
-}
-
-
-function openImg(evt) {
-
-    openPopup(imgPopup);
-    ImgOpenPopup.src = evt.target.src;
-    ImgOpenPopup.alt = evt.target.alt;
-    imgTitle.textContent = evt.target.alt;
-}
-
-function closeImg() {
-    closePopup(imgPopup);
 }
 
 function handlerProfileFormSubmit(evt) {
@@ -141,4 +137,6 @@ photoCards.addEventListener('submit', handlerPhotoFormSubmit);
 ImgOpenPopup.addEventListener('click', openImg);
 ImgClosePopup.addEventListener('click', closeImg);
 
-renderInitialCards();
+
+
+export { openPopup, closePopup, ImgOpenPopup };

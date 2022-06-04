@@ -37,32 +37,32 @@
             <p class="footer__author">&copy;2022. Андрей Суховьев</p>
         </footer>
 
-        <div class="popup popupprofile">
+        <div class="popup popupprofile popup-editProfile">
             <div class="popupprofile__container">
                 <button class="popup__close" id="profileclose" type="button" aria-label="закрыть окно"></button>
                 <h2 class="popupprofile__title">Редактировать профиль</h2>
-                <form class="popupprofile__user" name="user" novalidate>
+                <form class="popupprofile__user popup__form" name="edit-profile" id="form-profile" novalidate>
                     <fieldset class="popupprofile__input-container">
-                        <input type="text" id="inputname" name="name" value="Жак-Ив Кусто" placeholder="Ваше имя" class="popupprofile__input" minlength="2" maxlength="40" required>
-                        <span id="inputname-error" class="error"></span>
-                        <input type="text" id="inputjob" name="job" value="Исследователь океана" placeholder="Чем занимаетесь?" class="popupprofile__input" minlength="2" maxlength="200" required>
-                        <span id="inputjob-error" class="error"></span>
-                        <button class="popupprofile__save popupprofile__save_valid" type="submit" aria-label="сохранить">Сохранить</button>
+                        <input type="text" id="inputname" name="name" value="Жак-Ив Кусто" placeholder="Ваше имя" class="popupprofile__input popup__input" minlength="2" maxlength="40" required>
+                        <span id="inputname-error" class="error popup__input-error"></span>
+                        <input type="text" id="inputjob" name="job" value="Исследователь океана" placeholder="Чем занимаетесь?" class="popupprofile__input popup__input" minlength="2" maxlength="200" required>
+                        <span id="inputjob-error" class="error popup__input-error "></span>
+                        <button class="popupprofile__save popup__button" type="submit" aria-label="сохранить">Сохранить</button>
                     </fieldset>
                 </form>
             </div>
         </div>
-        <div class="popup popupphoto">
+        <div class="popup popupphoto popup-addCard">
             <div class="popupphoto__element">
                 <button class="popup__close" id="photoclose" type="button" aria-label="закрыть окно"></button>
                 <h2 class="popupphoto__title">Новое место</h2>
-                <form class="popupphoto__cards" name="cards" novalidate>
+                <form class="popupphoto__cards popup__form" id="form-card" name="cards" novalidate>
                     <fieldset class="popupphoto__input-cards">
-                        <input type="text" id="inputnamecard" name="namecard" value="Название" placeholder="название" class="popupphoto__input" minlength="2" maxlength="30" required>
-                        <span id="inputnamecard-error" class="error"></span>
-                        <input type="url" id="inputcard" name="card" value="Ссылка на картинку" placeholder="Ссылка на картинку" class="popupphoto__input" required>
-                        <span id="inputcard-error" class="error"></span>
-                        <button class="popupphoto__save popupphoto__save_valid" id="button-save" type="submit" aria-label="создать" disabled>Создать</button>
+                        <input type="text" id="inputnamecard" name="namecard" value="Название" placeholder="название" class="popupphoto__input popup__input" minlength="2" maxlength="30" required>
+                        <span id="inputnamecard-error" class="error popup__input-error"></span>
+                        <input type="url" id="inputcard" name="card" value="Ссылка на картинку" placeholder="Ссылка на картинку" class="popupphoto__input popup__input" required>
+                        <span id="inputcard-error" class="error popup__input-error"></span>
+                        <button class="popupphoto__save popup__button" id="button-save" type="submit" aria-label="создать">Создать</button>
                     </fieldset>
                 </form>
             </div>
@@ -88,9 +88,8 @@
 
     </div>
 
-    <script src="./scripts/initialCards.js"></script>
-    <script src="./scripts/script.js"></script>
-    <script src="./scripts/validate.js"></script>
+    <script type="module" src="./scripts/index.js"></script>
+
 </body>
 
 </html>
