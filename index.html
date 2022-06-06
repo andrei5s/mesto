@@ -37,37 +37,37 @@
             <p class="footer__author">&copy;2022. Андрей Суховьев</p>
         </footer>
 
-        <div class="popup popup__profile popup__profile-edit">
+        <div class="popup popup_profile popup_profile-edit">
             <div class="popup__profile-container">
                 <button class="popup__close" id="profileclose" type="button" aria-label="закрыть окно"></button>
                 <h2 class="popup__profile-title">Редактировать профиль</h2>
                 <form class="popup__profile-user popup__form" name="edit-profile" id="form-profile" novalidate>
                     <fieldset class="popup__profile-input">
-                        <input type="text" id="inputname" name="name" value="Жак-Ив Кусто" placeholder="Ваше имя" class="popupprofile__input popup__input" minlength="2" maxlength="40" required>
+                        <input type="text" id="inputname" name="name" value="Жак-Ив Кусто" placeholder="Ваше имя" class="popup__input" minlength="2" maxlength="40" required>
                         <span id="inputname-error" class="error popup__input-error"></span>
-                        <input type="text" id="inputjob" name="job" value="Исследователь океана" placeholder="Чем занимаетесь?" class="popupprofile__input popup__input" minlength="2" maxlength="200" required>
+                        <input type="text" id="inputjob" name="job" value="Исследователь океана" placeholder="Чем занимаетесь?" class="popup__input" minlength="2" maxlength="200" required>
                         <span id="inputjob-error" class="error popup__input-error "></span>
                         <button class="popup__button" type="submit" aria-label="сохранить">Сохранить</button>
                     </fieldset>
                 </form>
             </div>
         </div>
-        <div class="popup popup__photo popup-addCard">
+        <div class="popup popup_photo popup-addCard">
             <div class="popup__photo-element">
                 <button class="popup__close" id="photoclose" type="button" aria-label="закрыть окно"></button>
                 <h2 class="popup__photo-title">Новое место</h2>
                 <form class="popup__photo-cards popup__form" id="form-card" name="cards" novalidate>
                     <fieldset class="popup__photo-input">
-                        <input type="text" id="inputnamecard" name="namecard" value="Название" placeholder="название" class="popupphoto__input popup__input" minlength="2" maxlength="30" required>
+                        <input type="text" id="inputnamecard" name="namecard" value="Название" placeholder="название" class="popup__input" minlength="2" maxlength="30" required>
                         <span id="inputnamecard-error" class="error popup__input-error"></span>
-                        <input type="url" id="inputcard" name="card" value="Ссылка на картинку" placeholder="Ссылка на картинку" class="popupphoto__input popup__input" required>
+                        <input type="url" id="inputcard" name="card" value="Ссылка на картинку" placeholder="Ссылка на картинку" class="popup__input" required>
                         <span id="inputcard-error" class="error popup__input-error"></span>
                         <button class="popup__button" id="button-save" type="submit" aria-label="создать">Создать</button>
                     </fieldset>
                 </form>
             </div>
         </div>
-        <div class="popup popup__img">
+        <div class="popup popup_img">
             <figure class="popup__img-container">
                 <button class="popup__close" id="imgclose" type="button" aria-label="закрыть окно"></button>
                 <img class="popup__img-card" src="#" alt="#">

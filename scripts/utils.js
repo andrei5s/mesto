@@ -1,6 +1,6 @@
 import { openPopup, closePopup, imgOpenPopup } from "./index.js";
 
-const imgPopup = document.querySelector('.popup__img');
+const imgPopup = document.querySelector('.popup_img');
 const imgTitle = document.querySelector('.popup__img-title');
 
 function openImg(evt) {

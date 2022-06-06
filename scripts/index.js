@@ -3,7 +3,7 @@ import { Card } from "./Card.js";
 import { initialCards } from "./initialCards.js"
 import { FormValidator } from "./FormValidator.js";
 
-const ProfileOpenPopup = document.querySelector('.popup__profile');
+const ProfileOpenPopup = document.querySelector('.popup_profile');
 const profileOpenButton = document.querySelector('.profile__edit');
 const profileCloseButton = document.querySelector('#profileclose');
 const profileForm = document.querySelector('.popup__profile-user');
@@ -12,7 +12,7 @@ const jobInput = document.querySelector('#inputjob');
 const profileTitle = document.querySelector('.profile__title');
 const profileSubtitle = document.querySelector('.profile__subtitle');
 
-const photoPopup = document.querySelector('.popup__photo');
+const photoPopup = document.querySelector('.popup_photo');
 const photoAddOpenButon = document.querySelector('.profile__add');
 const photoAddCloseButon = document.querySelector('#photoclose');
 const inputPhoto = photoPopup.querySelector('#inputcard');
@@ -27,7 +27,7 @@ const imgClosePopup = document.querySelector('#imgclose');
 
 const popups = document.querySelectorAll('.popup');
 
-const popupEditProfile = document.querySelector('.popup__profile-edit');
+const popupEditProfile = document.querySelector('.popup_profile-edit');
 const popupAddCard = document.querySelector('.popup-addCard');
 const formAddCard = popupAddCard.querySelector('.popup__form');
 const formEditProfile = popupEditProfile.querySelector('.popup__form');
