@@ -1,4 +1,4 @@
-.popupprofile__container {
+.popup__photo-element {
     display: grid;
     align-items: center;
     position: relative;
@@ -12,7 +12,7 @@
 }
 
 @media screen and (max-width: 767px) {
-    .popupprofile__container {
+    .popup__photo-element {
         width: 282px;
     }
 }

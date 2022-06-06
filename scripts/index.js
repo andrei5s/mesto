@@ -3,31 +3,31 @@ import { Card } from "./Card.js";
 import { initialCards } from "./initialCards.js"
 import { FormValidator } from "./FormValidator.js";
 
-const ProfileOpenPopup = document.querySelector('.popupprofile');
+const ProfileOpenPopup = document.querySelector('.popup__profile');
 const profileOpenButton = document.querySelector('.profile__edit');
 const profileCloseButton = document.querySelector('#profileclose');
-const profileForm = document.querySelector('.popupprofile__user');
+const profileForm = document.querySelector('.popup__profile-user');
 const nameInput = document.querySelector('#inputname');
 const jobInput = document.querySelector('#inputjob');
 const profileTitle = document.querySelector('.profile__title');
 const profileSubtitle = document.querySelector('.profile__subtitle');
 
-const photoPopup = document.querySelector('.popupphoto');
+const photoPopup = document.querySelector('.popup__photo');
 const photoAddOpenButon = document.querySelector('.profile__add');
 const photoAddCloseButon = document.querySelector('#photoclose');
 const inputPhoto = photoPopup.querySelector('#inputcard');
 const inputPhotoName = photoPopup.querySelector('#inputnamecard');
-const photoCards = photoPopup.querySelector('.popupphoto__cards');
+const photoCards = photoPopup.querySelector('.popup__photo-cards');
 
 const elements = document.querySelector('.elements');
 const elementTemplate = document.querySelector('.element__template');
 
-const ImgOpenPopup = document.querySelector('.popupimg__card');
-const ImgClosePopup = document.querySelector('#imgclose');
+const imgOpenPopup = document.querySelector('.popup__img-card');
+const imgClosePopup = document.querySelector('#imgclose');
 
 const popups = document.querySelectorAll('.popup');
 
-const popupEditProfile = document.querySelector('.popup-editProfile');
+const popupEditProfile = document.querySelector('.popup__profile-edit');
 const popupAddCard = document.querySelector('.popup-addCard');
 const formAddCard = popupAddCard.querySelector('.popup__form');
 const formEditProfile = popupEditProfile.querySelector('.popup__form');
@@ -50,9 +50,9 @@ photoCardsValidate.enableValidation();
 profileFormValidate.enableValidation();
 
 function renderCard(item) {
-
     const element = new Card(item, elementTemplate);
-    elements.prepend(element.createCard());
+    const cardElement = element.createCard();
+    elements.prepend(cardElement);
 }
 
 function renderInitialCards() {
@@ -80,25 +80,22 @@ function closePopup(popup) {
 }
 
 function openProfilePopup() {
-
-    openPopup(ProfileOpenPopup);
-
     nameInput.value = profileTitle.textContent;
     jobInput.value = profileSubtitle.textContent;
+
+    openPopup(ProfileOpenPopup);
 
 }
 
 function closeProfilePopap() {
     closePopup(ProfileOpenPopup);
-
-
 }
 
 function openPhotoPopup() {
     photoCardsValidate.resetForm();
-    openPopup(photoPopup);
     inputPhotoName.value = '';
     inputPhoto.value = '';
+    openPopup(photoPopup);
 }
 
 function closePhotoPopup() {
@@ -134,9 +131,9 @@ photoAddOpenButon.addEventListener('click', openPhotoPopup);
 photoAddCloseButon.addEventListener('click', closePhotoPopup);
 photoCards.addEventListener('submit', handlerPhotoFormSubmit);
 
-ImgOpenPopup.addEventListener('click', openImg);
-ImgClosePopup.addEventListener('click', closeImg);
+imgOpenPopup.addEventListener('click', openImg);
+imgClosePopup.addEventListener('click', closeImg);
 
 
 
-export { openPopup, closePopup, ImgOpenPopup };
+export { openPopup, closePopup, imgOpenPopup };
