@@ -3,7 +3,7 @@ import { Card } from "./Card.js";
 import { initialCards } from "./initialCards.js"
 import { FormValidator } from "./FormValidator.js";
 
-const ProfileOpenPopup = document.querySelector('.popup_profile');
+const profileOpenPopup = document.querySelector('.popup_profile');
 const profileOpenButton = document.querySelector('.profile__edit');
 const profileCloseButton = document.querySelector('#profileclose');
 const profileForm = document.querySelector('.popup__profile-user');
@@ -83,12 +83,12 @@ function openProfilePopup() {
     nameInput.value = profileTitle.textContent;
     jobInput.value = profileSubtitle.textContent;
 
-    openPopup(ProfileOpenPopup);
+    openPopup(profileOpenPopup);
 
 }
 
 function closeProfilePopap() {
-    closePopup(ProfileOpenPopup);
+    closePopup(profileOpenPopup);
 }
 
 function openPhotoPopup() {
