@@ -1,38 +1,25 @@
-import { openImg, closeImg } from "./utils.js";
-import { Card } from "./Card.js";
-import { initialCards } from "./initialCards.js"
-import { FormValidator } from "./FormValidator.js";
+import { Card } from "../components/Card.js";
+import { initialCards } from "../utils/initialCards.js";
+import { FormValidator } from "../components/FormValidator.js";
+import Section from "../components/Section.js";
+import PopupWithForm from "../components/PopupWithForm.js";
+import PopupWithImage from "../components/PopupWithImage.js";
+import UserInfo from "../components/UserInfo.js";
 
-const profileOpenPopup = document.querySelector('.popup_profile');
-const profileOpenButton = document.querySelector('.profile__edit');
-const profileCloseButton = document.querySelector('#profileclose');
-const profileForm = document.querySelector('.popup__profile-user');
-const nameInput = document.querySelector('#inputname');
-const jobInput = document.querySelector('#inputjob');
-const profileTitle = document.querySelector('.profile__title');
-const profileSubtitle = document.querySelector('.profile__subtitle');
-
-const photoPopup = document.querySelector('.popup_photo');
-const photoAddOpenButon = document.querySelector('.profile__add');
-const photoAddCloseButon = document.querySelector('#photoclose');
-const inputPhoto = photoPopup.querySelector('#inputcard');
-const inputPhotoName = photoPopup.querySelector('#inputnamecard');
-const photoCards = photoPopup.querySelector('.popup__photo-cards');
-
-const elements = document.querySelector('.elements');
-const elementTemplate = document.querySelector('.element__template');
-
-const imgOpenPopup = document.querySelector('.popup__img-card');
-const imgClosePopup = document.querySelector('#imgclose');
-
-const popups = document.querySelectorAll('.popup');
-
-const popupEditProfile = document.querySelector('.popup_profile-edit');
-const popupAddCard = document.querySelector('.popup-addCard');
-const formAddCard = popupAddCard.querySelector('.popup__form');
-const formEditProfile = popupEditProfile.querySelector('.popup__form');
-
-const ESC_CODE = 'Escape';
+import {
+    topInputProfile,
+    bottomInputProfile,
+    profileOpenButton,
+    profileTitle,
+    profileSubtitle,
+    inputPhotoName,
+    elements,
+    formAddCard,
+    formEditProfile,
+    photoAddOpenButon,
+    inputPhoto,
+    elementTemplate
+} from "../utils/constans.js";
 
 const config = {
     formSelector: '.popup__form',
@@ -49,91 +36,73 @@ const profileFormValidate = new FormValidator(config, formEditProfile);
 photoCardsValidate.enableValidation();
 profileFormValidate.enableValidation();
 
-function renderCard(item) {
-    const element = new Card(item, elementTemplate);
-    const cardElement = element.createCard();
+//создание новой карточки
+const openPopupImage = new PopupWithImage('.popup_img');
+openPopupImage.setEventListeners();
+
+function generateCard(data) {
+    const card = new Card(data, elementTemplate, () => {
+        openPopupImage.open(data.name, data.link);
+    });
+    return card.createCard()
+}
+
+//загрузка начальных карточек
+function renderCard(data) {
+    const cardElement = generateCard(data);
     elements.prepend(cardElement);
 }
 
-function renderInitialCards() {
+const section = new Section({ items: initialCards, renderer: renderCard }, '.elements');
+section.renderItems();
 
-    initialCards.forEach(renderCard);
-}
+const userInfo = new UserInfo({
+    title: profileTitle,
+    subtitle: profileSubtitle,
+});
 
-renderInitialCards();
+// инициализация попапа "Профиль"
+const popupProfile = new PopupWithForm({
+    popupSelector: '.popup_profile',
+    handleFormSubmit: (inputValues) => {
+        userInfo.setUserInfo(inputValues);
+        popupProfile.close();
+    },
+});
 
-function closeByEsc(evt) {
-    if (evt.key === ESC_CODE) {
-        const openedPopup = document.querySelector('.popup_opened');
-        closePopup(openedPopup);
+popupProfile.setEventListeners();
+
+// инициализация попапа "Фото"
+const popupPhoto = new PopupWithForm({
+    popupSelector: ".popup_photo",
+
+    handleFormSubmit() {
+        const card = generateCard({
+            name: inputPhotoName.value,
+            link: inputPhoto.value
+        });
+
+        section.addItem(card);
+        popupPhoto.close();
     }
-}
+});
 
-function openPopup(popup) {
-    popup.classList.add('popup_opened');
-    document.addEventListener('keydown', closeByEsc);
-}
+popupPhoto.setEventListeners();
 
-function closePopup(popup) {
-    popup.classList.remove('popup_opened');
-    document.removeEventListener('keydown', closeByEsc);
-}
+// слушатель для попапа "Профиль"
+profileOpenButton.addEventListener("click", () => {
+    const getUserInfo = userInfo.getUserInfo();
+    topInputProfile.value = getUserInfo.name;
+    bottomInputProfile.value = getUserInfo.about;
 
-function openProfilePopup() {
-    nameInput.value = profileTitle.textContent;
-    jobInput.value = profileSubtitle.textContent;
+    popupProfile.open();
+    profileFormValidate.resetForm();
+});
 
-    openPopup(profileOpenPopup);
-
-}
-
-function closeProfilePopap() {
-    closePopup(profileOpenPopup);
-}
-
-function openPhotoPopup() {
+// слушатель для попапа "Фото"
+photoAddOpenButon.addEventListener("click", () => {
+    popupPhoto.open();
     photoCardsValidate.resetForm();
     inputPhotoName.value = '';
     inputPhoto.value = '';
-    openPopup(photoPopup);
-}
-
-function closePhotoPopup() {
-    closePopup(photoPopup);
-}
-
-function handlerProfileFormSubmit(evt) {
-    evt.preventDefault();
-    profileTitle.textContent = nameInput.value;
-    profileSubtitle.textContent = jobInput.value;
-    closeProfilePopap();
-}
-
-function handlerPhotoFormSubmit(evt) {
-    evt.preventDefault();
-    renderCard({ name: inputPhotoName.value, link: inputPhoto.value });
-    closePhotoPopup();
-}
-
-popups.forEach((popup) => {
-    popup.addEventListener('mousedown', (evt) => {
-        if (evt.target.classList.contains('popup_opened')) {
-            closePopup(popup);
-        }
-    });
 });
-
-profileOpenButton.addEventListener('click', openProfilePopup);
-profileCloseButton.addEventListener('click', closeProfilePopap);
-profileForm.addEventListener('submit', handlerProfileFormSubmit);
-
-photoAddOpenButon.addEventListener('click', openPhotoPopup);
-photoAddCloseButon.addEventListener('click', closePhotoPopup);
-photoCards.addEventListener('submit', handlerPhotoFormSubmit);
-
-imgOpenPopup.addEventListener('click', openImg);
-imgClosePopup.addEventListener('click', closeImg);
-
-
-
-export { openPopup, closePopup, imgOpenPopup };

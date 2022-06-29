@@ -1,10 +1,9 @@
-import { openImg } from "./utils.js";
-
 class Card {
-    constructor(item, cardTemplateSelector) {
-        this._elementTemplate = cardTemplateSelector;
-        this._name = item.name;
-        this._link = item.link;
+    constructor(data, cardSelector, handleCardClick) {
+        this._cardSelector = cardSelector;
+        this._name = data.name;
+        this._link = data.link;
+        this._handleCardClick = handleCardClick;
     }
 
     _hendleLikeIcon = (evt) => {
@@ -19,11 +18,12 @@ class Card {
     _setEventListeners() {
         this._element.querySelector('.element__like').addEventListener('click', this._hendleLikeIcon);
         this._element.querySelector('.element__delete').addEventListener('click', this._deleteCard);
-        this._cardImage.addEventListener('click', openImg);
+        this._cardImage.addEventListener('click', () => this._handleCardClick());
+
     }
 
     createCard() {
-        this._element = this._elementTemplate.content.querySelector('.element').cloneNode(true);
+        this._element = this._cardSelector.content.querySelector('.element').cloneNode(true);
         this._elementLike = this._element.querySelector('.element__like');
         this._cardImage = this._element.querySelector('.element__image');
 
