@@ -49,12 +49,13 @@ function generateCard(data) {
 }
 
 //загрузка начальных карточек
-function renderCard(data) {
-    const cardElement = generateCard(data);
-    elements.prepend(cardElement);
-}
+const section = new Section({
+    items: initialCards,
+    renderer: (data) => {
+        section.addItem(generateCard(data));
+    }
+}, '.elements');
 
-const section = new Section({ items: initialCards, renderer: renderCard }, '.elements');
 section.renderItems();
 
 const userInfo = new UserInfo({

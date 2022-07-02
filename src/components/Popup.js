@@ -22,12 +22,10 @@ export default class Popup {
 
     setEventListeners() {
         this._popup.querySelector('.popup__close').addEventListener('click', () => this.close());
-        document.querySelectorAll('.popup').forEach(() => {
-            this._popup.addEventListener('click', (evt) => {
-                if (evt.target.classList.contains('popup_opened')) {
-                    this.close();
-                }
-            });
+        this._popup.addEventListener('click', (evt) => {
+            if (evt.target.classList.contains('popup_opened')) {
+                this.close();
+            }
         });
     }
 }
