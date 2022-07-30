@@ -22,7 +22,7 @@
 .element__place{color:#000;font-family:Inter,Arial,sans-serif;font-size:24px;font-style:normal;font-weight:900;line-height:29px;margin:25px 0 0 25px;overflow:hidden;padding-bottom:31px;text-overflow:ellipsis;white-space:nowrap;width:246px}
 .element__liked{display:flex;flex-direction:column}
 .element__like{background:url(1ad06e85f169668a1f36.svg);background-repeat:no-repeat;border:none;cursor:pointer;font-size:0;height:19px;margin:30px 30px auto auto;width:26px}.element__like:hover{opacity:.5}.element__like:focus{outline:none}
-.element__like-count{font-size:13px;font-weight:400;line-height:1.23;margin:52px 43px auto auto}
+.element__like-count{font-size:13px;font-weight:400;line-height:1.23;margin:3px 22px auto auto}
 .element__like_active{background:url(35948469632d0421d697.svg);background-repeat:no-repeat}
 .footer{margin:auto;max-width:880px}@media screen and (max-width:1279px){.footer{width:65%}}@media screen and (max-width:767px){.footer{width:282px}}
 .footer__author{color:#545454;font-family:Inter,Arial,sans-serif;font-size:18px;font-style:normal;font-weight:400;line-height:22px;margin:67px 0 0;padding-bottom:60px;width:318px}@media screen and (max-width:767px){.footer__author{font-size:14px;line-height:17px;margin:48px auto 0;width:282px}}
