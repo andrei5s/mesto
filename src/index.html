@@ -15,12 +15,16 @@
 
         <main class="content">
             <section class="profile">
-                <img src="<%=require('./images/kusto.png')%>" alt="аватарка" class="profile__image">
+                <div class="profile__avatar">
+                    <div class="profile__avatar_overlay" id="avatar-button"></div>
+                    <!--<img src="<%=require('./images/kusto.png')%>" alt="аватарка" class="profile__image" id="avatar-button">-->
+                    <img src="#" alt="аватарка" class="profile__image">
+                </div>
                 <div class="profile__info">
-                    <h1 class="profile__title">Жак-Ив Кусто </h1>
+                    <h1 class="profile__title"></h1>
                     <button id="edit" type="button" class="profile__edit">                   
                 </button>
-                    <p class="profile__subtitle">Исследователь океана</p>
+                    <p class="profile__subtitle"></p>
                 </div>
                 <button id="add" type="button" class="profile__add">               
             </button>
@@ -40,7 +44,7 @@
             <div class="popup__profile-container">
                 <button class="popup__close" id="profileclose" type="button" aria-label="закрыть окно"></button>
                 <h2 class="popup__profile-title">Редактировать профиль</h2>
-                <form class="popup__profile-user popup__form" name="edit-profile" id="form-profile" novalidate>
+                <form class="popup__form" name="edit-profile" id="form-profile" novalidate>
                     <fieldset class="popup__profile-input">
                         <input type="text" id="inputname" name="name" value="Жак-Ив Кусто" placeholder="Ваше имя" class="popup__input popup__input-top" minlength="2" maxlength="40" required>
                         <span id="inputname-error" class="error popup__input-error"></span>
@@ -55,7 +59,7 @@
             <div class="popup__photo-element">
                 <button class="popup__close" id="photoclose" type="button" aria-label="закрыть окно"></button>
                 <h2 class="popup__photo-title">Новое место</h2>
-                <form class="popup__photo-cards popup__form" id="form-card" name="cards" novalidate>
+                <form class="popup__form" id="form-card" name="cards" novalidate>
                     <fieldset class="popup__photo-input">
                         <input type="text" id="inputnamecard" name="namecard" value="Название" placeholder="название" class="popup__input" minlength="2" maxlength="30" required>
                         <span id="inputnamecard-error" class="error popup__input-error"></span>
@@ -73,6 +77,28 @@
                 <figcaption class="popup__img-title"></figcaption>
             </figure>
         </div>
+        <div class="popup popup-dellCard">
+            <div class="popup__container">
+                <button class="popup__close" id="photoclose" type="button" aria-label="закрыть окно"></button>
+                <h2 class="popup__title">Вы уверены?</h2>
+                <form class="popup__form" id="form-card" name="cards" novalidate>
+                    <button class="popup__button" id="button-dell" type="submit" aria-label="Да">Да</button>
+                </form>
+            </div>
+        </div>
+        <div class="popup popup-avatar">
+            <div class="popup__container">
+                <button class="popup__close" id="photoclose" type="button" aria-label="закрыть окно"></button>
+                <h2 class="popup__title">Обновить аватар</h2>
+                <form class="popup__form" id="form-card" name="cards" novalidate>
+                    <fieldset class="popup__form-input">
+                        <input type="url" id="inputcard" name="avatar" value="Ссылка на картинку" placeholder="Ссылка на ававтар" class="popup__input" required>
+                        <span id="inputcard-error" class="error popup__input-error"></span>
+                        <button class="popup__button" id="button-save" type="submit" aria-label="создать">Сохранить</button>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
 
         <template class="element__template">
             <div class="element">
@@ -80,7 +106,10 @@
                 <img src="#" alt="#" class="element__image">
                 <div class="element__group">
                     <h2 class="element__place"></h2>
+                    <div class="element__liked">
                     <button id="like" type="button" class="element__like"></button>
+                    <span class="element__like-count"></span>
+                    </div>
                 </div> 
             </div>       
         </template>

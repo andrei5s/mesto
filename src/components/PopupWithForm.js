@@ -5,6 +5,8 @@ export default class PopupWithForm extends Popup {
         super(popupSelector);
         this._handleFormSubmit = handleFormSubmit;
         this._popupForm = this._popup.querySelector('.popup__form');
+        this._button = this._popup.querySelector('button[type="submit"]');
+        this._buttonDefaultText = this._button.textContent;
     }
 
     _getInputValues() {
@@ -14,6 +16,14 @@ export default class PopupWithForm extends Popup {
             (input) => { this._formValues[input.name] = input.value }
         );
         return this._formValues;
+    }
+
+    chengeSubmitHendler(newSubmitHendler) {
+        this._handleFormSubmit = newSubmitHendler
+    }
+
+    setUserUX(isSending) {
+        this._button.textContent = isSending ? 'Сохранение...' : this._buttonDefaultText;
     }
 
     setEventListeners() {

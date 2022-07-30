@@ -9,6 +9,8 @@ export const nameInput = document.querySelector('#inputname');
 export const jobInput = document.querySelector('#inputjob');
 export const profileTitle = document.querySelector('.profile__title');
 export const profileSubtitle = document.querySelector('.profile__subtitle');
+export const profileAvatar = document.querySelector('.profile__image');
+export const editButtonAvatar = document.querySelector('#avatar-button');
 
 export const photoPopup = document.querySelector('.popup_photo');
 export const photoAddOpenButon = document.querySelector('.profile__add');
@@ -31,6 +33,11 @@ export const popupEditProfile = document.querySelector('.popup_profile-edit');
 export const popupAddCard = document.querySelector('.popup-addCard');
 export const formAddCard = popupAddCard.querySelector('.popup__form');
 export const formEditProfile = popupEditProfile.querySelector('.popup__form');
+export const popupAvatar = document.querySelector('.popup-avatar');
+export const formAvatar = popupAvatar.querySelector('.popup__form');
+
+export const popupDell = document.querySelector('.popup-dellCard');
+export const photoDellButton = document.querySelector('.element__delete');
 
 export const ESC_CODE = 'Escape';
 
