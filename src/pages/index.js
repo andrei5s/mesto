@@ -20,9 +20,9 @@ import {
     inputPhoto,
     elementTemplate,
     editButtonAvatar,
-    formAvatar
+    formAvatar,
+    // inputAvatar
 } from "../utils/constans.js";
-
 
 let userId
 
@@ -214,5 +214,5 @@ popupDell.setEventListeners();
 editButtonAvatar.addEventListener("click", () => {
     popupAvatar.open();
     avatarFormValidate.resetForm();
-    inputPhoto.value = '';
+    // inputAvatar.value = '';
 });

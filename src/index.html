@@ -42,7 +42,7 @@
 
         <div class="popup popup_profile popup_profile-edit">
             <div class="popup__profile-container">
-                <button class="popup__close" id="profileclose" type="button" aria-label="закрыть окно"></button>
+                <button class="popup__close" type="button" aria-label="закрыть окно"></button>
                 <h2 class="popup__profile-title">Редактировать профиль</h2>
                 <form class="popup__form" name="edit-profile" id="form-profile" novalidate>
                     <fieldset class="popup__profile-input">
@@ -57,15 +57,15 @@
         </div>
         <div class="popup popup_photo popup-addCard">
             <div class="popup__photo-element">
-                <button class="popup__close" id="photoclose" type="button" aria-label="закрыть окно"></button>
+                <button class="popup__close" type="button" aria-label="закрыть окно"></button>
                 <h2 class="popup__photo-title">Новое место</h2>
-                <form class="popup__form" id="form-card" name="cards" novalidate>
+                <form class="popup__form" name="cards" novalidate>
                     <fieldset class="popup__photo-input">
                         <input type="text" id="inputnamecard" name="namecard" value="Название" placeholder="название" class="popup__input" minlength="2" maxlength="30" required>
                         <span id="inputnamecard-error" class="error popup__input-error"></span>
                         <input type="url" id="inputcard" name="card" value="Ссылка на картинку" placeholder="Ссылка на картинку" class="popup__input" required>
                         <span id="inputcard-error" class="error popup__input-error"></span>
-                        <button class="popup__button" id="button-save" type="submit" aria-label="создать">Создать</button>
+                        <button class="popup__button" type="submit" aria-label="создать">Создать</button>
                     </fieldset>
                 </form>
             </div>
@@ -79,22 +79,22 @@
         </div>
         <div class="popup popup-dellCard">
             <div class="popup__container">
-                <button class="popup__close" id="photoclose" type="button" aria-label="закрыть окно"></button>
+                <button class="popup__close" type="button" aria-label="закрыть окно"></button>
                 <h2 class="popup__title">Вы уверены?</h2>
-                <form class="popup__form" id="form-card" name="cards" novalidate>
+                <form class="popup__form" novalidate>
                     <button class="popup__button" id="button-dell" type="submit" aria-label="Да">Да</button>
                 </form>
             </div>
         </div>
         <div class="popup popup-avatar">
             <div class="popup__container">
-                <button class="popup__close" id="photoclose" type="button" aria-label="закрыть окно"></button>
+                <button class="popup__close" type="button" aria-label="закрыть окно"></button>
                 <h2 class="popup__title">Обновить аватар</h2>
-                <form class="popup__form" id="form-card" name="cards" novalidate>
+                <form class="popup__form" novalidate>
                     <fieldset class="popup__form-input">
-                        <input type="url" id="inputcard" name="avatar" value="Ссылка на картинку" placeholder="Ссылка на ававтар" class="popup__input" required>
-                        <span id="inputcard-error" class="error popup__input-error"></span>
-                        <button class="popup__button" id="button-save" type="submit" aria-label="создать">Сохранить</button>
+                        <input type="url" id="inputavatar" name="avatar" value="Ссылка на картинку" placeholder="Ссылка на ававтар" class="popup__input" required>
+                        <span id="inputavatar-error" class="error popup__input-error"></span>
+                        <button class="popup__button" type="submit" aria-label="сохранить">Сохранить</button>
                     </fieldset>
                 </form>
             </div>
