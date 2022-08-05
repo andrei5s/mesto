@@ -5,3 +5,9 @@
     padding: 0;
     margin: 90px auto 0 auto;
 }
+
+@media screen and (max-width: 550px) {
+    .popup__img-container {
+        margin-top: 25vh;
+    }
+}

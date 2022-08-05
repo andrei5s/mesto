@@ -10,7 +10,6 @@ class Card {
         this._handleCardClick = handleCardClick;
         this._hendleDeleteClick = hendleDeleteClick;
         this._hendleLikeClick = hendleLikeClick;
-
     }
 
     _addLike() {
@@ -33,8 +32,8 @@ class Card {
 
     setLikes(newLikes) {
         this._likes = newLikes;
-        const likeElementCount = this._element.querySelector('.element__like-count');
-        likeElementCount.textContent = this._likes.length;
+        //const likeElementCount = this._element.querySelector('.element__like-count');
+        this._likeElementCount.textContent = this._likes.length;
 
 
         if (this.isLiked()) {
@@ -56,6 +55,7 @@ class Card {
         this._elementLike = this._element.querySelector('.element__like');
         this._cardImage = this._element.querySelector('.element__image');
         this._elementDelete = this._element.querySelector('.element__delete');
+        this._likeElementCount = this._element.querySelector('.element__like-count');
 
         this.setLikes(this._likes);
         this._element.querySelector('.element__place').textContent = this._name;

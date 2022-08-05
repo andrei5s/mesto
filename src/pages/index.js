@@ -6,13 +6,11 @@ import PopupWithForm from "../components/PopupWithForm.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import UserInfo from "../components/UserInfo.js";
 import { api } from "../components/Api.js";
+import PopupWithConfirmation from '../components/PopupWithConfirmation.js';
 import {
     topInputProfile,
     bottomInputProfile,
     profileOpenButton,
-    profileTitle,
-    profileSubtitle,
-    profileAvatar,
     inputPhotoName,
     formAddCard,
     formEditProfile,
@@ -21,19 +19,20 @@ import {
     elementTemplate,
     editButtonAvatar,
     formAvatar,
-    // inputAvatar
+    inputAvatar
 } from "../utils/constans.js";
 
-let userId
+let userId;
 
-api.getProfile()
-    .then(res => {
-        userInfo.setUserInfo(res);
-        userId = res._id
-    });
+Promise.all([
+        api.getProfile(),
+        api.getInitialCards()
+    ])
+    .then(([res, cardList]) => {
 
-api.getInitialCards()
-    .then(cardList => {
+        userInfo.setUserInfo(res),
+            userId = res._id;
+        section.renderItems(cardList);
         cardList.forEach(data => {
             const card = generateCard({
                 name: data.name,
@@ -46,7 +45,39 @@ api.getInitialCards()
 
             section.addItem(card);
         })
+
+        console.log(res);
+        console.log(cardList);
+    })
+    .catch((err) => {
+        console.log(err);
+    })
+
+/*api.getProfile()
+    .then(res => {
+        userInfo.setUserInfo(res);
+        userId = res._id
     });
+
+api.getInitialCards()
+    .then(cardList => {
+        section.renderItems(cardList);
+        cardList.forEach(data => {
+            const card = generateCard({
+                name: data.name,
+                link: data.link,
+                likes: data.likes,
+                id: data._id,
+                userId: userId,
+                ownerId: data.owner._id
+            });
+
+            section.addItem(card);
+
+        })
+
+    });*/
+
 
 const config = {
     formSelector: '.popup__form',
@@ -65,17 +96,16 @@ photoCardsValidate.enableValidation();
 profileFormValidate.enableValidation();
 avatarFormValidate.enableValidation();
 
+const imageOpenPopup = new PopupWithImage('.popup_img');
+imageOpenPopup.setEventListeners();
 
 //создание новой карточки
-const openPopupImage = new PopupWithImage('.popup_img');
-openPopupImage.setEventListeners();
-
 function generateCard(data) {
     const card = new Card(
         data,
         elementTemplate,
         () => {
-            openPopupImage.open(data.name, data.link);
+            imageOpenPopup.open(data.name, data.link);
         },
         (id) => {
             popupDell.open();
@@ -113,18 +143,19 @@ function generateCard(data) {
 
 //загрузка начальных карточек
 const section = new Section({
-    items: [],
+    // items: [],
     renderer: (data) => {
         section.addItem(generateCard(data));
+
     }
 }, '.elements');
 
-section.renderItems();
+//section.renderItems();
 
 const userInfo = new UserInfo({
-    title: profileTitle,
-    subtitle: profileSubtitle,
-    avatar: profileAvatar
+    titleSelector: '.profile__title',
+    subtitleSelector: '.profile__subtitle',
+    avatarSelector: '.profile__image'
 });
 
 // инициализация попапа "Профиль"
@@ -142,6 +173,7 @@ const popupProfile = new PopupWithForm({
             .finally(() => popupProfile.setUserUX(false));
     },
 });
+
 
 popupProfile.setEventListeners();
 
@@ -194,25 +226,30 @@ profileOpenButton.addEventListener("click", () => {
     bottomInputProfile.value = getUserInfo.about;
 
     popupProfile.open();
-    profileFormValidate.resetForm();
+    // profileFormValidate.resetForm();
 });
 
 // слушатель для попапа "Фото"
 photoAddOpenButon.addEventListener("click", () => {
     popupPhoto.open();
-    photoCardsValidate.resetForm();
+    // photoCardsValidate.resetForm();
     inputPhotoName.value = '';
     inputPhoto.value = '';
 });
 
-const popupDell = new PopupWithForm({
+/*const popupDell = new PopupWithForm({
+    popupSelector: '.popup-dellCard'
+})*/
+
+const popupDell = new PopupWithConfirmation({
     popupSelector: '.popup-dellCard'
 })
 popupDell.setEventListeners();
 
+
 // слушатель для попапа "Аватарка"
 editButtonAvatar.addEventListener("click", () => {
     popupAvatar.open();
-    avatarFormValidate.resetForm();
-    // inputAvatar.value = '';
+    //avatarFormValidate.resetForm();
+    inputAvatar.value = '';
 });

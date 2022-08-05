@@ -39,6 +39,7 @@ export const formAvatar = popupAvatar.querySelector('.popup__form');
 
 export const popupDell = document.querySelector('.popup-dellCard');
 export const photoDellButton = document.querySelector('.element__delete');
+export const likeElementCount = document.querySelector('.element__like-count');
 
 export const ESC_CODE = 'Escape';
 
