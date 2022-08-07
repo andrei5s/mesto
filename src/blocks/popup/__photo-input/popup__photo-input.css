@@ -1,8 +1,8 @@
 .popup__photo-input {
-    margin: 24px 0 0 0;
+    margin: 54px 0 0 0;
     padding: 0;
     width: 430px;
-    height: 122px;
+    height: 90px;
     display: flex;
     flex-direction: column;
     border: none;

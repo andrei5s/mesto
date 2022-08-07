@@ -47,7 +47,6 @@ class Card {
         this._element.querySelector('.element__like').addEventListener('click', () => this._hendleLikeClick(this._id));
         this._element.querySelector('.element__delete').addEventListener('click', () => this._hendleDeleteClick(this._id));
         this._cardImage.addEventListener('click', () => this._handleCardClick());
-
     }
 
     createCard() {

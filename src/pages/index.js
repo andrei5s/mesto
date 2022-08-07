@@ -19,7 +19,6 @@ import {
     elementTemplate,
     editButtonAvatar,
     formAvatar,
-    inputAvatar
 } from "../utils/constans.js";
 
 let userId;
@@ -33,51 +32,13 @@ Promise.all([
         userInfo.setUserInfo(res),
             userId = res._id;
         section.renderItems(cardList);
-        cardList.forEach(data => {
-            const card = generateCard({
-                name: data.name,
-                link: data.link,
-                likes: data.likes,
-                id: data._id,
-                userId: userId,
-                ownerId: data.owner._id
-            });
-
-            section.addItem(card);
-        })
 
         console.log(res);
         console.log(cardList);
     })
     .catch((err) => {
         console.log(err);
-    })
-
-/*api.getProfile()
-    .then(res => {
-        userInfo.setUserInfo(res);
-        userId = res._id
     });
-
-api.getInitialCards()
-    .then(cardList => {
-        section.renderItems(cardList);
-        cardList.forEach(data => {
-            const card = generateCard({
-                name: data.name,
-                link: data.link,
-                likes: data.likes,
-                id: data._id,
-                userId: userId,
-                ownerId: data.owner._id
-            });
-
-            section.addItem(card);
-
-        })
-
-    });*/
-
 
 const config = {
     formSelector: '.popup__form',
@@ -145,12 +106,17 @@ function generateCard(data) {
 const section = new Section({
     // items: [],
     renderer: (data) => {
-        section.addItem(generateCard(data));
+        section.addItem(generateCard({
+            name: data.name,
+            link: data.link,
+            likes: data.likes,
+            id: data._id,
+            userId: userId,
+            ownerId: data.owner._id
+        }));
 
     }
 }, '.elements');
-
-//section.renderItems();
 
 const userInfo = new UserInfo({
     titleSelector: '.profile__title',
@@ -173,7 +139,6 @@ const popupProfile = new PopupWithForm({
             .finally(() => popupProfile.setUserUX(false));
     },
 });
-
 
 popupProfile.setEventListeners();
 
@@ -226,20 +191,14 @@ profileOpenButton.addEventListener("click", () => {
     bottomInputProfile.value = getUserInfo.about;
 
     popupProfile.open();
-    // profileFormValidate.resetForm();
+    profileFormValidate.resetForm();
 });
 
 // слушатель для попапа "Фото"
 photoAddOpenButon.addEventListener("click", () => {
     popupPhoto.open();
-    // photoCardsValidate.resetForm();
-    inputPhotoName.value = '';
-    inputPhoto.value = '';
+    photoCardsValidate.resetForm();
 });
-
-/*const popupDell = new PopupWithForm({
-    popupSelector: '.popup-dellCard'
-})*/
 
 const popupDell = new PopupWithConfirmation({
     popupSelector: '.popup-dellCard'
@@ -250,6 +209,5 @@ popupDell.setEventListeners();
 // слушатель для попапа "Аватарка"
 editButtonAvatar.addEventListener("click", () => {
     popupAvatar.open();
-    //avatarFormValidate.resetForm();
-    inputAvatar.value = '';
+    avatarFormValidate.resetForm();
 });
